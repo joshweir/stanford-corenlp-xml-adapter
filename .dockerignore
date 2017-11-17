@@ -1,0 +1,25 @@
+#Ignore bundler config.
+/.bundle
+
+/log/*
+/tmp/*
+
+# Ignore .idea files
+.idea/
+
+# Ignore Byebug command history file.
+.byebug_history
+
+.ruby-gemset
+node_modules
+
+public/dist/*.json
+
+public/dist/js/*.js
+public/dist/js/*.map
+
+public/dist/css/*.css
+public/dist/css/*.map
+vendor/cache
+
+.env

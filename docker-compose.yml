@@ -1,0 +1,76 @@
+version: '3.1'
+services:
+    web:
+        build:
+            context: .
+            dockerfile: Dockerfile
+            args:
+                - RAILS_ENV=${RAILS_ENV:-development}
+        command: bash #bash -c "rm -f /app/tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+        restart: always
+        volumes:
+            - .:/app
+            - bundle_cache:/bundle
+        stdin_open: true
+        tty: true
+        #ports:
+        #    - "3000:3000"
+        #depends_on:
+        #    - db
+        environment:
+            - RAILS_ENV=${RAILS_ENV:-development}
+volumes:
+    bundle_cache:
+        external: true
+
+#proposed:
+#dev:
+#docker-compose build
+
+#run rails app in dev:
+#bin/docker-web-dev
+#drop to shell:
+#bin/docker-web-dev-bash
+#run guard:
+#bin/docker-web-dev-guard
+
+#see details of the above executables below..
+
+#in dev, run the "web" service exposting to the host the ports
+#that service uses and any services "web" depends on
+#this way both adminer (localhost:8080) and app (localhost:3000)
+#can both be accessed from the host
+#docker-compose run --service-ports web
+#to create db or migrate
+#docker-compose run web rake db:create
+#docker-compose run web rake db:migrate
+#run guard:
+#docker-compose run web bash
+#-> inside container:
+# guard
+#at the moment i cant determine how to have the app running in
+#one container and run guard in another at the same time?
+#i tried:
+#docker-compose -p tests run -p 3000:3001 -p 8080:8081 -p 5432:55432 web bash
+#errors:
+#ERROR: for db  Cannot start service db: driver failed programming external connectivity on endpoint tests_db_1 (fc08a42297577c9e8c75d0c2f0d073e0f9e9eefc7fb44dcb3ddc9bdcfed2c0a4): Bind for 0.0.0.0:5432 failed: port is already allocated
+
+#prod:
+#build and push:
+#export RAILS_ENV=production
+#optionally specify the version of the stack to build/push (defaults to latest):
+#export FXDATA_VERSION=0.1.0
+#docker-compose -f docker-compose.yml build
+#docker-compose -f docker-compose.yml push
+#deploy:
+#export RAILS_ENV=production
+#optionally specify the version of the stack to build/push (defaults to latest):
+#export FXDATA_VERSION=0.1.0
+#docker swarm init
+#docker stack deploy fxdata-stack -f docker-compose.yml --with-registry-auth
+#to create db or migrate
+#docker-compose -f docker-compose.yml run web rake db:create
+#docker-compose -f docker-compose.yml run web rake db:migrate
+
+#connect to db from another window:
+#psql -h localhost -U <user> <pass>
