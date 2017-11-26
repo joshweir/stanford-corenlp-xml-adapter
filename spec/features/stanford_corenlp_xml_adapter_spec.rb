@@ -32,7 +32,7 @@ module StanfordCorenlpXmlAdapter
     end
 
     it "extracts a part-of-speech tag from a token" do
-      expected = ["UH", "NN", "NN", "."]
+      expected = ["PRP", "VBP", "NNP", "."]
       expect(valid_doc
               .sentences[1]
               .tokens
@@ -41,7 +41,7 @@ module StanfordCorenlpXmlAdapter
     end
 
     it "extracts a ner tag from a token" do
-      expected = ["O", "O", "O", "O"]
+      expected = ["O", "O", "PERSON", "O"]
       expect(valid_doc
               .sentences[1]
               .tokens

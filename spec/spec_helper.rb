@@ -82,68 +82,106 @@ RSpec.configure do |config|
       </sentence>
       <sentence id="2" sentimentValue="2" sentiment="Neutral">
         <tokens>
-          <token id="4">
+          <token id="1">
             <word>I</word>
             <lemma>I</lemma>
-            <POS>UH</POS>
+            <CharacterOffsetBegin>13</CharacterOffsetBegin>
+            <CharacterOffsetEnd>14</CharacterOffsetEnd>
+            <POS>PRP</POS>
             <NER>O</NER>
             <Speaker>PER0</Speaker>
           </token>
-          <token id="5">
+          <token id="2">
             <word>am</word>
-            <lemma>am</lemma>
-            <POS>NN</POS>
+            <lemma>be</lemma>
+            <CharacterOffsetBegin>15</CharacterOffsetBegin>
+            <CharacterOffsetEnd>17</CharacterOffsetEnd>
+            <POS>VBP</POS>
             <NER>O</NER>
             <Speaker>PER0</Speaker>
           </token>
-          <token id="6">
+          <token id="3">
             <word>Josh</word>
-            <lemma>josh</lemma>
-            <POS>NN</POS>
-            <NER>O</NER>
+            <lemma>Josh</lemma>
+            <CharacterOffsetBegin>18</CharacterOffsetBegin>
+            <CharacterOffsetEnd>22</CharacterOffsetEnd>
+            <POS>NNP</POS>
+            <NER>PERSON</NER>
             <Speaker>PER0</Speaker>
           </token>
-          <token id="7">
+          <token id="4">
             <word>.</word>
             <lemma>.</lemma>
+            <CharacterOffsetBegin>22</CharacterOffsetBegin>
+            <CharacterOffsetEnd>23</CharacterOffsetEnd>
             <POS>.</POS>
             <NER>O</NER>
             <Speaker>PER0</Speaker>
           </token>
         </tokens>
-        <parse>(ROOT (S (VP (NP (INTJ (UH Hello)) (NP (NN world)))) (. !))) </parse>
+        <parse>(ROOT (S (NP (PRP I)) (VP (VBP am) (NP (NNP Josh))) (. .))) </parse>
         <dependencies type="basic-dependencies">
           <dep type="root">
             <governor idx="0">ROOT</governor>
-            <dependent idx="2">world</dependent>
+            <dependent idx="3">Josh</dependent>
           </dep>
-          <dep type="discourse">
-            <governor idx="2">world</governor>
-            <dependent idx="1">Hello</dependent>
+          <dep type="nsubj">
+            <governor idx="3">Josh</governor>
+            <dependent idx="1">I</dependent>
+          </dep>
+          <dep type="cop">
+            <governor idx="3">Josh</governor>
+            <dependent idx="2">am</dependent>
           </dep>
         </dependencies>
         <dependencies type="collapsed-dependencies">
           <dep type="root">
             <governor idx="0">ROOT</governor>
-            <dependent idx="2">world</dependent>
+            <dependent idx="3">Josh</dependent>
           </dep>
-          <dep type="discourse">
-            <governor idx="2">world</governor>
-            <dependent idx="1">Hello</dependent>
+          <dep type="nsubj">
+            <governor idx="3">Josh</governor>
+            <dependent idx="1">I</dependent>
+          </dep>
+          <dep type="cop">
+            <governor idx="3">Josh</governor>
+            <dependent idx="2">am</dependent>
           </dep>
         </dependencies>
         <dependencies type="collapsed-ccprocessed-dependencies">
           <dep type="root">
             <governor idx="0">ROOT</governor>
-            <dependent idx="2">world</dependent>
+            <dependent idx="3">Josh</dependent>
           </dep>
-          <dep type="discourse">
-            <governor idx="2">world</governor>
-            <dependent idx="1">Hello</dependent>
+          <dep type="nsubj">
+            <governor idx="3">Josh</governor>
+            <dependent idx="1">I</dependent>
+          </dep>
+          <dep type="cop">
+            <governor idx="3">Josh</governor>
+            <dependent idx="2">am</dependent>
           </dep>
         </dependencies>
       </sentence>
     </sentences>
+    <coreference>
+      <coreference>
+        <mention representative="true">
+          <sentence>2</sentence>
+          <start>3</start>
+          <end>4</end>
+          <head>3</head>
+          <text>Josh</text>
+        </mention>
+        <mention>
+          <sentence>2</sentence>
+          <start>1</start>
+          <end>2</end>
+          <head>1</head>
+          <text>I</text>
+        </mention>
+      </coreference>
+    </coreference>
   </document>
 </root>}
   end

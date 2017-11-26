@@ -66,7 +66,7 @@ RSpec.describe NokogiriMixins do
 
   describe "#pos" do
     it "extracts a part-of-speech tag from a token" do
-      expected = ["UH", "NN", "NN", "."]
+      expected = ["PRP", "VBP", "NNP", "."]
       expect(valid_doc
               .sentences[1]
               .tokens
@@ -76,7 +76,7 @@ RSpec.describe NokogiriMixins do
   end
 
   it "extracts a ner tag from a token" do
-    expected = ["O", "O", "O", "O"]
+    expected = ["O", "O", "PERSON", "O"]
     expect(valid_doc
             .sentences[1]
             .tokens
