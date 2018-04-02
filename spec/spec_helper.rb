@@ -1,3 +1,5 @@
+require 'coveralls'
+Coveralls.wear!
 require "bundler/setup"
 require "stanford_corenlp_xml_adapter"
 

@@ -1,4 +1,7 @@
 # stanford-corenlp-xml-adapter
+
+[![Build Status](https://travis-ci.org/joshweir/stanford-corenlp-xml-adapter.svg?branch=master)](https://travis-ci.org/joshweir/stanford-corenlp-xml-adapter) [![Coverage Status](https://coveralls.io/repos/github/joshweir/stanford-corenlp-xml-adapter/badge.svg?branch=master)](https://coveralls.io/github/joshweir/stanford-corenlp-xml-adapter?branch=master)
+
 Nokogiri based Ruby adapter to the output returned by Stanford CoreNLP XML Server.
 
 ## Installation

@@ -27,6 +27,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "gem-release"
   spec.add_development_dependency "rb-fsevent"
   spec.add_development_dependency "guard-rspec"
+  spec.add_development_dependency "coveralls"
+  spec.add_development_dependency "simplecov"
   spec.add_dependency "activesupport"
   spec.add_dependency "nokogiri"
 end
