@@ -123,7 +123,7 @@ RSpec.configure do |config|
         </tokens>
         <parse>(ROOT (S (NP (PRP I)) (VP (VBP am) (NP (NNP Josh))) (. .))) </parse>
         <dependencies type="basic-dependencies">
-          <dep type="root">
+          <dep type="root" foo="bar">
             <governor idx="0">ROOT</governor>
             <dependent idx="3">Josh</dependent>
           </dep>
@@ -151,6 +151,34 @@ RSpec.configure do |config|
           </dep>
         </dependencies>
         <dependencies type="collapsed-ccprocessed-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="3">Josh</dependent>
+          </dep>
+          <dep type="nsubj">
+            <governor idx="3">Josh</governor>
+            <dependent idx="1">I</dependent>
+          </dep>
+          <dep type="cop">
+            <governor idx="3">Josh</governor>
+            <dependent idx="2">am</dependent>
+          </dep>
+        </dependencies>
+        <dependencies type="enhanced-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="3">Josh</dependent>
+          </dep>
+          <dep type="nsubj">
+            <governor idx="3">Josh</governor>
+            <dependent idx="1">I</dependent>
+          </dep>
+          <dep type="cop">
+            <governor idx="3">Josh</governor>
+            <dependent idx="2">am</dependent>
+          </dep>
+        </dependencies>
+        <dependencies type="enhanced-plus-plus-dependencies">
           <dep type="root">
             <governor idx="0">ROOT</governor>
             <dependent idx="3">Josh</dependent>
