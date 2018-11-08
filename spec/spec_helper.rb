@@ -123,7 +123,7 @@ RSpec.configure do |config|
         </tokens>
         <parse>(ROOT (S (NP (PRP I)) (VP (VBP am) (NP (NNP Josh))) (. .))) </parse>
         <dependencies type="basic-dependencies">
-          <dep type="root" foo="bar">
+          <dep type="root">
             <governor idx="0">ROOT</governor>
             <dependent idx="3">Josh</dependent>
           </dep>
