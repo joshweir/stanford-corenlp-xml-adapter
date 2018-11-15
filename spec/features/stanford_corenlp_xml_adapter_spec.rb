@@ -258,5 +258,38 @@ module StanfordCorenlpXmlAdapter
               .enhanced_plus_plus_dependencies)
         .to eq expected
     end
+
+    it "extracts the coreferences" do
+      expected = [
+        {
+          representative: {
+            sentence: 2,
+            start: 3,
+            end: 4,
+            head: 3,
+            text: "Josh"
+          },
+          mentions: [
+            {
+              sentence: 2,
+              start: 3,
+              end: 4,
+              head: 3,
+              text: "Josh",
+              representative: true
+            },
+            {
+              sentence: 2,
+              start: 1,
+              end: 2,
+              head: 1,
+              text: "I"
+            }
+          ]
+        }
+      ]
+      expect(valid_doc.coreferences)
+        .to eq expected
+    end
   end
 end

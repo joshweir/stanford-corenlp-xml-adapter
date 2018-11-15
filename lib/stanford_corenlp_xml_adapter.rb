@@ -1,13 +1,17 @@
-require "stanford_corenlp_xml_adapter/version"
-require "stanford_corenlp_xml_adapter/nokogiri_mixins"
 require "nokogiri"
+require "stanford_corenlp_xml_adapter/version"
+require "stanford_corenlp_xml_adapter/nokogiri_misc_mixins"
+require "stanford_corenlp_xml_adapter/coreference"
+require "stanford_corenlp_xml_adapter/dependency_parse"
 
 class Nokogiri::XML::Document
-  include NokogiriMixins
+  include NokogiriMiscellaneousMixins
+  include Coreference
 end
 
 class Nokogiri::XML::Element
-  include NokogiriMixins
+  include NokogiriMiscellaneousMixins
+  include DependencyParse
 end
 
 module StanfordCorenlpXmlAdapter

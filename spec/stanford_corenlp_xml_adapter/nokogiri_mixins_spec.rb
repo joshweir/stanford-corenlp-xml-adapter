@@ -1,6 +1,6 @@
 require "spec_helper"
 
-RSpec.describe NokogiriMixins do
+RSpec.describe NokogiriMiscellaneousMixins do
   let(:valid_doc) {
     StanfordCorenlpXmlAdapter.doc valid_xml
   }
