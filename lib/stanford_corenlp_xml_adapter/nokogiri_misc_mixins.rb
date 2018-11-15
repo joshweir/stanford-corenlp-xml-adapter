@@ -1,4 +1,4 @@
-module NokogiriMixins
+module NokogiriMiscellaneousMixins
   def sentences
     self.xpath("//sentences//sentence")
   end

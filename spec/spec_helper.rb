@@ -164,6 +164,34 @@ RSpec.configure do |config|
             <dependent idx="2">am</dependent>
           </dep>
         </dependencies>
+        <dependencies type="enhanced-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="3">Josh</dependent>
+          </dep>
+          <dep type="nsubj">
+            <governor idx="3">Josh</governor>
+            <dependent idx="1">I</dependent>
+          </dep>
+          <dep type="cop">
+            <governor idx="3">Josh</governor>
+            <dependent idx="2">am</dependent>
+          </dep>
+        </dependencies>
+        <dependencies type="enhanced-plus-plus-dependencies">
+          <dep type="root">
+            <governor idx="0">ROOT</governor>
+            <dependent idx="3">Josh</dependent>
+          </dep>
+          <dep type="nsubj">
+            <governor idx="3">Josh</governor>
+            <dependent idx="1">I</dependent>
+          </dep>
+          <dep type="cop">
+            <governor idx="3">Josh</governor>
+            <dependent idx="2">am</dependent>
+          </dep>
+        </dependencies>
       </sentence>
     </sentences>
     <coreference>
