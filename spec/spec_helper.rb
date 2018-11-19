@@ -239,4 +239,54 @@ RSpec.configure do |config|
   </document>
 </root>}
   end
+
+  def dep_parse_expected
+    [
+      {
+        type: 'root',
+        governor: {
+          idx: 0,
+          pos: nil,
+          ner: nil,
+          value: 'ROOT'
+        },
+        dependent: {
+          idx: 3,
+          pos: 'NNP',
+          ner: 'PERSON',
+          value: 'Josh'
+        }
+      },
+      {
+        type: 'nsubj',
+        governor: {
+          idx: 3,
+          pos: 'NNP',
+          ner: 'PERSON',
+          value: 'Josh'
+        },
+        dependent: {
+          idx: 1,
+          pos: 'PRP',
+          ner: nil,
+          value: 'I'
+        }
+      },
+      {
+        type: 'cop',
+        governor: {
+          idx: 3,
+          pos: 'NNP',
+          ner: 'PERSON',
+          value: 'Josh'
+        },
+        dependent: {
+          idx: 2,
+          pos: 'VBP',
+          ner: nil,
+          value: 'am'
+        }
+      }
+    ]
+  end
 end

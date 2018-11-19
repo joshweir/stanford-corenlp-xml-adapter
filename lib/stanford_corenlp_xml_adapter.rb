@@ -4,6 +4,8 @@ require "stanford_corenlp_xml_adapter/nokogiri_misc_mixins"
 require "stanford_corenlp_xml_adapter/coreference"
 require "stanford_corenlp_xml_adapter/dependency_parse"
 
+include DependencyParse
+
 class Nokogiri::XML::Document
   include NokogiriMiscellaneousMixins
   include Coreference
@@ -11,7 +13,7 @@ end
 
 class Nokogiri::XML::Element
   include NokogiriMiscellaneousMixins
-  include DependencyParse
+  #include DependencyParse
 end
 
 module StanfordCorenlpXmlAdapter

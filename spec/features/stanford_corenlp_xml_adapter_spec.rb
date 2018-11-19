@@ -50,213 +50,23 @@ module StanfordCorenlpXmlAdapter
     end
 
     it "extracts the dependency parsed basic-dependencies" do
-      expected = [
-        {
-          type: 'root',
-          governor: {
-            idx: 0,
-            value: 'ROOT'
-          },
-          dependent: {
-            idx: 3,
-            value: 'Josh'
-          }
-        },
-        {
-          type: 'nsubj',
-          governor: {
-            idx: 3,
-            value: 'Josh'
-          },
-          dependent: {
-            idx: 1,
-            value: 'I'
-          }
-        },
-        {
-          type: 'cop',
-          governor: {
-            idx: 3,
-            value: 'Josh'
-          },
-          dependent: {
-            idx: 2,
-            value: 'am'
-          }
-        }
-      ]
-      expect(valid_doc
-              .sentences[1]
-              .basic_dependencies)
-        .to eq expected
+      expect(basic_dependencies(valid_doc, 1)).to eq dep_parse_expected
     end
 
     it "extracts the dependency parsed collapsed-dependencies" do
-      expected = [
-        {
-          type: 'root',
-          governor: {
-            idx: 0,
-            value: 'ROOT'
-          },
-          dependent: {
-            idx: 3,
-            value: 'Josh'
-          }
-        },
-        {
-          type: 'nsubj',
-          governor: {
-            idx: 3,
-            value: 'Josh'
-          },
-          dependent: {
-            idx: 1,
-            value: 'I'
-          }
-        },
-        {
-          type: 'cop',
-          governor: {
-            idx: 3,
-            value: 'Josh'
-          },
-          dependent: {
-            idx: 2,
-            value: 'am'
-          }
-        }
-      ]
-      expect(valid_doc
-              .sentences[1]
-              .collapsed_dependencies)
-        .to eq expected
+      expect(collapsed_dependencies(valid_doc, 1)).to eq dep_parse_expected
     end
 
     it "extracts the dependency parsed collapsed-ccprocessed-dependencies" do
-      expected = [
-        {
-          type: 'root',
-          governor: {
-            idx: 0,
-            value: 'ROOT'
-          },
-          dependent: {
-            idx: 3,
-            value: 'Josh'
-          }
-        },
-        {
-          type: 'nsubj',
-          governor: {
-            idx: 3,
-            value: 'Josh'
-          },
-          dependent: {
-            idx: 1,
-            value: 'I'
-          }
-        },
-        {
-          type: 'cop',
-          governor: {
-            idx: 3,
-            value: 'Josh'
-          },
-          dependent: {
-            idx: 2,
-            value: 'am'
-          }
-        }
-      ]
-      expect(valid_doc
-              .sentences[1]
-              .collapsed_ccprocessed_dependencies)
-        .to eq expected
+      expect(collapsed_ccprocessed_dependencies(valid_doc, 1)).to eq dep_parse_expected
     end
 
     it "extracts the dependency parsed enhanced-dependencies" do
-      expected = [
-        {
-          type: 'root',
-          governor: {
-            idx: 0,
-            value: 'ROOT'
-          },
-          dependent: {
-            idx: 3,
-            value: 'Josh'
-          }
-        },
-        {
-          type: 'nsubj',
-          governor: {
-            idx: 3,
-            value: 'Josh'
-          },
-          dependent: {
-            idx: 1,
-            value: 'I'
-          }
-        },
-        {
-          type: 'cop',
-          governor: {
-            idx: 3,
-            value: 'Josh'
-          },
-          dependent: {
-            idx: 2,
-            value: 'am'
-          }
-        }
-      ]
-      expect(valid_doc
-              .sentences[1]
-              .enhanced_dependencies)
-        .to eq expected
+      expect(enhanced_dependencies(valid_doc, 1)).to eq dep_parse_expected
     end
 
     it "extracts the dependency parsed enhanced-plus-plus-dependencies" do
-      expected = [
-        {
-          type: 'root',
-          governor: {
-            idx: 0,
-            value: 'ROOT'
-          },
-          dependent: {
-            idx: 3,
-            value: 'Josh'
-          }
-        },
-        {
-          type: 'nsubj',
-          governor: {
-            idx: 3,
-            value: 'Josh'
-          },
-          dependent: {
-            idx: 1,
-            value: 'I'
-          }
-        },
-        {
-          type: 'cop',
-          governor: {
-            idx: 3,
-            value: 'Josh'
-          },
-          dependent: {
-            idx: 2,
-            value: 'am'
-          }
-        }
-      ]
-      expect(valid_doc
-              .sentences[1]
-              .enhanced_plus_plus_dependencies)
-        .to eq expected
+      expect(enhanced_plus_plus_dependencies(valid_doc, 1)).to eq dep_parse_expected
     end
 
     it "extracts the coreferences" do
