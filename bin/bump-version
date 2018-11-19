@@ -1,1 +1,1 @@
-gem bump --version minor --remote
+gem bump --version minor --remote --release
