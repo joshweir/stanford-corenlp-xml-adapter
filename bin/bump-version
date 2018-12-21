@@ -1,1 +1,1 @@
-gem bump --version minor --release --tag
+docker-compose run --rm --service-ports web /bin/bash -c "gem bump --version minor --release --tag"
