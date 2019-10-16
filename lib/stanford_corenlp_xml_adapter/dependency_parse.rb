@@ -40,7 +40,7 @@ module DependencyParse
   def dependency_nok_to_blob(dep_parse_input, pos_tags_input, ner_tags_input)
     {
       type: dep_parse_input.attributes["type"].value,
-      extra: dep_parse_input.attributes["extra"].value,
+      extra: dep_parse_input.attributes["extra"] ? dep_parse_input.attributes["extra"].value : nil,
       governor: dependency_slice_nok_to_blob(
         "governor", dep_parse_input, pos_tags_input, ner_tags_input
       ),
