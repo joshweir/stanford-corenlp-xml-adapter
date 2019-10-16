@@ -7,46 +7,42 @@ module StanfordCorenlpXmlAdapter
     it "extracts sentences from a doc" do
       expected = ["Hello world !", "I am Josh ."]
       expect(valid_doc
-              .sentences
-              .map{|s| s.xpath("tokens//token//word").map(&:text).join(' ')})
-        .to eq expected
+        .sentences
+        .map { |s| s.xpath("tokens//token//word").map(&:text).join(" ") }).to eq expected
     end
 
     it "extracts tokens from a doc" do
       expected = ["Hello", "world", "!", "I", "am", "Josh", "."]
-      expect(valid_doc.tokens.map{|t| t._word.text}).to eq expected
+      expect(valid_doc.tokens.map { |t| t._word.text }).to eq expected
     end
 
     it "extracts words from a doc" do
       expected = ["Hello", "world", "!", "I", "am", "Josh", "."]
-      expect(valid_doc._words.map{|t| t.text}).to eq expected
+      expect(valid_doc._words.map { |t| t.text }).to eq expected
     end
 
     it "extracts tokens from a sentence" do
       expected = ["I", "am", "Josh", "."]
       expect(valid_doc
-              .sentences[1]
-              .tokens
-              .map{|t| t._word.text})
-        .to eq expected
+        .sentences[1]
+        .tokens
+        .map { |t| t._word.text }).to eq expected
     end
 
     it "extracts a part-of-speech tag from a token" do
       expected = ["PRP", "VBP", "NNP", "."]
       expect(valid_doc
-              .sentences[1]
-              .tokens
-              .map{|t| t.pos.text})
-        .to eq expected
+        .sentences[1]
+        .tokens
+        .map { |t| t.pos.text }).to eq expected
     end
 
     it "extracts a ner tag from a token" do
       expected = ["O", "O", "PERSON", "O"]
       expect(valid_doc
-              .sentences[1]
-              .tokens
-              .map{|t| t.ner.text})
-        .to eq expected
+        .sentences[1]
+        .tokens
+        .map { |t| t.ner.text }).to eq expected
     end
 
     it "extracts the dependency parsed basic-dependencies" do
@@ -77,40 +73,7 @@ module StanfordCorenlpXmlAdapter
             start: 3,
             end: 4,
             head: 3,
-            text: "Josh"
-          },
-          mentions: [
-            {
-              sentence: 2,
-              start: 3,
-              end: 4,
-              head: 3,
-              text: "Josh",
-              representative: true
-            },
-            {
-              sentence: 2,
-              start: 1,
-              end: 2,
-              head: 1,
-              text: "I"
-            }
-          ]
-        }
-      ]
-      expect(valid_doc.coreferences).to eq expected
-    end
-
-    it "extracts the coreferences_with_pos" do
-      expected = [
-        {
-          representative: {
-            sentence: 2,
-            start: 3,
-            end: 4,
-            head: 3,
             text: "Josh",
-            pos: ["NNP"]
           },
           mentions: [
             {
@@ -120,7 +83,6 @@ module StanfordCorenlpXmlAdapter
               head: 3,
               text: "Josh",
               representative: true,
-              pos: ["NNP"]
             },
             {
               sentence: 2,
@@ -128,12 +90,86 @@ module StanfordCorenlpXmlAdapter
               end: 2,
               head: 1,
               text: "I",
-              pos: ["PRP"]
-            }
-          ]
-        }
+            },
+          ],
+        },
       ]
-      expect(valid_doc.coreferences_with_pos).to eq expected
+      expect(valid_doc.coreferences).to eq expected
+    end
+
+    it "extracts the coreferences with pos" do
+      expected = [
+        {
+          representative: {
+            sentence: 2,
+            start: 3,
+            end: 4,
+            head: 3,
+            text: "Josh",
+            pos: ["NNP"],
+          },
+          mentions: [
+            {
+              sentence: 2,
+              start: 3,
+              end: 4,
+              head: 3,
+              text: "Josh",
+              representative: true,
+              pos: ["NNP"],
+            },
+            {
+              sentence: 2,
+              start: 1,
+              end: 2,
+              head: 1,
+              text: "I",
+              pos: ["PRP"],
+            },
+          ],
+        },
+      ]
+      expect(valid_doc.coreferences(with_pos: true)).to eq expected
+    end
+
+    it "extracts the coreferences with dep parse" do
+      expected = [
+        {
+          representative: {
+            sentence: 2,
+            start: 3,
+            end: 4,
+            head: 3,
+            text: "Josh",
+            pos: ["NNP"],
+            dep_parse: {
+              TODO: get all dep parse dependents and modifiers
+              dependents: 
+              mofifiers: 
+            }
+          },
+          mentions: [
+            {
+              sentence: 2,
+              start: 3,
+              end: 4,
+              head: 3,
+              text: "Josh",
+              representative: true,
+              pos: ["NNP"],
+            },
+            {
+              sentence: 2,
+              start: 1,
+              end: 2,
+              head: 1,
+              text: "I",
+              pos: ["PRP"],
+            },
+          ],
+        },
+      ]
+      expect(valid_doc.coreferences(with_pos: true)).to eq expected
     end
   end
 end
