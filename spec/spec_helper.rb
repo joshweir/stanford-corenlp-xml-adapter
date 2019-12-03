@@ -1,4 +1,4 @@
-require 'coveralls'
+require "coveralls"
 Coveralls.wear!
 require "bundler/setup"
 require "stanford_corenlp_xml_adapter"
@@ -243,50 +243,53 @@ RSpec.configure do |config|
   def dep_parse_expected
     [
       {
-        type: 'root',
+        type: "root",
         governor: {
           idx: 0,
           pos: nil,
           ner: nil,
-          value: 'ROOT'
+          value: "ROOT",
         },
         dependent: {
           idx: 3,
-          pos: 'NNP',
-          ner: 'PERSON',
-          value: 'Josh'
-        }
+          pos: "NNP",
+          ner: "PERSON",
+          value: "Josh",
+        },
+        extra: nil,
       },
       {
-        type: 'nsubj',
+        type: "nsubj",
         governor: {
           idx: 3,
-          pos: 'NNP',
-          ner: 'PERSON',
-          value: 'Josh'
+          pos: "NNP",
+          ner: "PERSON",
+          value: "Josh",
         },
         dependent: {
           idx: 1,
-          pos: 'PRP',
+          pos: "PRP",
           ner: nil,
-          value: 'I'
-        }
+          value: "I",
+        },
+        extra: nil,
       },
       {
-        type: 'cop',
+        type: "cop",
         governor: {
           idx: 3,
-          pos: 'NNP',
-          ner: 'PERSON',
-          value: 'Josh'
+          pos: "NNP",
+          ner: "PERSON",
+          value: "Josh",
         },
         dependent: {
           idx: 2,
-          pos: 'VBP',
+          pos: "VBP",
           ner: nil,
-          value: 'am'
-        }
-      }
+          value: "am",
+        },
+        extra: nil,
+      },
     ]
   end
 end
